@@ -29,7 +29,7 @@ ClapTrap & ClapTrap::operator=(const ClapTrap & other) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap destructor called for name " << _name << std::endl;
+	std::cout << "ClapTrap destructor called for " << _name << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target) {
@@ -40,7 +40,8 @@ void ClapTrap::attack(const std::string& target) {
 	}
 	
 	if (this->_energyPoints == 0) {
-		std::cout << "ClapTrap " << _name << " has no energy left to attack!" << std::endl;
+		std::cout << "ClapTrap " << _name 
+				  << " has no energy left to attack!" << std::endl;
 		return;
 	}
 

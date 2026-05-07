@@ -1,17 +1,15 @@
-NAME = clap_trap
+NAME = scav_trap
 
 CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp \
-	ClapTrap.hpp \
-	ClapTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJDIR = objects
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
-DEPS = ClapTrap.hpp
+DEPS = ClapTrap.hpp ScavTrap.hpp
 
 all: $(NAME)
 

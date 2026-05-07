@@ -70,6 +70,9 @@
 	ScavTrap's destructor is automatically virtual by inheritance, but
 	explicitly writing it makes the code much more readable.
 
+	*** Marking the attack() function of the ClapTrap class as "virtual" will
+		allow the derived class's implementation to OVERRIDE it.
+
 (7) Understanding the memory layout
 
 	Because of "public ClapTrap", when you instantiate a ScavTrap, the memory

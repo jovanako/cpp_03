@@ -3,24 +3,21 @@
 
 #include "ClapTrap.hpp"
 
-// ScavTrap inherits from ClapTrap
+// ScavTrap inherits from ClapTrap ": public ClapTrap"
 class ScavTrap : public ClapTrap {
 	public:
-		// Orthodox Canonical Form
-		ScavTrap();										// Default constructor
+		ScavTrap();
 		
-		ScavTrap(std::string name);						// Parametric constructor
+		ScavTrap(std::string name);
 		
-		ScavTrap(const ScavTrap & other);				// Copy constructor
+		ScavTrap(const ScavTrap & other);
 		
-		ScavTrap & operator=(const ScavTrap & other);	// Copy assignment operator
+		ScavTrap & operator=(const ScavTrap & other);
 		
-		virtual ~ScavTrap();							// Destructor
+		virtual ~ScavTrap();
 
-		// Overriding the base class attack
 		void attack(const std::string & target);
 		
-		// ScavTrap's unique ability
 		void guardGate();
 };
 

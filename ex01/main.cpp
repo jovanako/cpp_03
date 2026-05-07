@@ -1,60 +1,55 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 #include <iostream>
 
 int main(void) {
-	// basic functionality test
 	{
-		std::cout << "--- TEST 1: Basic actions ---" << std::endl;
-		
-		ClapTrap trappy("Trappy");
+		std::cout << "--- TEST 1: Construction/Destruction Chaining ---" << std::endl;
+		ScavTrap scav("Serena");
+		// Watch output for:
+		// 1. ClapTrap Constructor
+		// 2. ScavTrap Constructor
+	}
+	// Watch output for:
+	// 1. ScavTrap Destructor
+	// 2. ClapTrap Destructor
 
-		trappy.attack("a training dummy");
-		trappy.takeDamage(5);
-		trappy.beRepaired(3);
+	{
+		std::cout << "\n--- TEST 2: ScavTrap Stats and Attack ---" << std::endl;
+		ScavTrap serena("Serena");
+
+		// ScavTrap starts with 50 energy
+		// It should deal 20 damage
+		serena.attack("a dangerous bandit");
+
+		// Use takeDamage to see if it survives more than 10 HP
+		serena.takeDamage(30); // Should have 70 HP left
+		serena.beRepaired(20); // Should have 90 HP left
 	}
 
-	// energy depletion test
 	{
-		std::cout << "\n--- TEST 2: Energy depletion ---" << std::endl;
-
-		ClapTrap tiredBot("Exhausto");
-
-		for (int i = 0; i < 10; i++) {
-			tiredBot.attack("the air");
-		}
-		// 11th action: should print an error message instead of attacking
-		tiredBot.attack("the air again");
-		tiredBot.beRepaired(5); // Should also fail
+		std::cout << "\n--- TEST 3: Special Ability ---" << std::endl;
+		ScavTrap guard("GuardBot");
+		guard.guardGate(); // Should print the Gate keeper mode message
 	}
 
-	// death/zero HP test
 	{
-		std::cout << "\n--- TEST 3: Death logic ---" << std::endl;
-		
-		ClapTrap ghost("Ghosty");
+		std::cout << "\n--- TEST 4: Pointer Chaining ---" << std::endl;
+		ClapTrap* poly = new ScavTrap("PolyBot");
 
-		ghost.takeDamage(10); // 0 HP
-		ghost.attack("a target"); // should fail
-		ghost.beRepaired(10); //should fail
+		poly->attack("the void"); // Will call ClapTrap::attack unless you made it virtual
+
+		delete poly; // MUST call both destructors because of 'virtual ~ClapTrap()'
 	}
 
-	// Over-damage (underflow) prevention
 	{
-		std::cout << "\n--- TEST 4: Massive damage ---" << std::endl;
-		ClapTrap tank("Tanky");
+		std::cout << "\n--- TEST 5: Derived Copying ---" << std::endl;
+		ScavTrap original("Original");
+		original.guardGate();
 
-		tank.takeDamage(50); // HP is only 10. Should result in 0, not 4,294,967,286
-		tank.beRepaired(10); // should fail because it's at 0 HP
-	}
-
-	// orthodox canonical form test
-	{
-		std::cout << "\n--- TEST 5: Canonical form ---" << std::endl;
-		ClapTrap original("Original");
-		original.takeDamage(5); // HP is now 5
-
-		ClapTrap copy(original); // should have the name "Original" and 5 HP
-		ClapTrap assigned;
-		assigned = original; // should also have 5 HP
+		ScavTrap copy(original);
+		ScavTrap assigned("Temporary");
+		assigned = original;
+		// Expected values for ScavTrap: HP: 100, EP: 50, AD: 20
 	}
 }
+
