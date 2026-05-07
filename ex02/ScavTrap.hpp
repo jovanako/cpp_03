@@ -3,7 +3,6 @@
 
 #include "ClapTrap.hpp"
 
-// ScavTrap inherits from ClapTrap ": public ClapTrap"
 class ScavTrap : public ClapTrap {
 	public:
 		ScavTrap();
@@ -16,7 +15,7 @@ class ScavTrap : public ClapTrap {
 		
 		virtual ~ScavTrap();
 
-		virtual void attack(const std::string & target);
+		void attack(const std::string & target);
 		
 		void guardGate();
 };

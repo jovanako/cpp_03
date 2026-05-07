@@ -72,6 +72,11 @@
 
 	*** Marking the attack() function of the ClapTrap class as "virtual" will
 		allow the derived class's implementation to OVERRIDE it.
+		The keyword "virtual" applied to a function enables polymorphism.
+		It will take the most "specific" version of the behavior.
+		If you have a ClapTrap* pointing to a ScavTrap, and you call 
+		attack(), the virtual table directs the program to 
+		ScavTrap::attack().
 
 (7) Understanding the memory layout
 

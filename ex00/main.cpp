@@ -6,32 +6,32 @@ int main(void) {
 	{
 		std::cout << "--- TEST 1: Basic actions ---" << std::endl;
 		
-		ClapTrap trappy("Trappy");
+		ClapTrap trap("Trapple");
 
-		trappy.attack("a training dummy");
-		trappy.takeDamage(5);
-		trappy.beRepaired(3);
+		trap.attack("a training dummy");
+		trap.takeDamage(5);
+		trap.beRepaired(3);
 	}
 
 	// energy depletion test
 	{
 		std::cout << "\n--- TEST 2: Energy depletion ---" << std::endl;
 
-		ClapTrap tiredBot("Exhausto");
+		ClapTrap tiredClap("TiredClap");
 
 		for (int i = 0; i < 10; i++) {
-			tiredBot.attack("the air");
+			tiredClap.attack("the enemy");
 		}
 		// 11th action: should print an error message instead of attacking
-		tiredBot.attack("the air again");
-		tiredBot.beRepaired(5); // Should also fail
+		tiredClap.attack("the enemy again");
+		tiredClap.beRepaired(5); // Should also fail
 	}
 
 	// death/zero HP test
 	{
 		std::cout << "\n--- TEST 3: Death logic ---" << std::endl;
 		
-		ClapTrap ghost("Ghosty");
+		ClapTrap ghost("Ghostling");
 
 		ghost.takeDamage(10); // 0 HP
 		ghost.attack("a target"); // should fail
@@ -41,10 +41,10 @@ int main(void) {
 	// Over-damage (underflow) prevention
 	{
 		std::cout << "\n--- TEST 4: Massive damage ---" << std::endl;
-		ClapTrap tank("Tanky");
+		ClapTrap punch("Punchy");
 
-		tank.takeDamage(50); // HP is only 10. Should result in 0, not 4,294,967,286
-		tank.beRepaired(10); // should fail because it's at 0 HP
+		punch.takeDamage(50); // HP is only 10. Should result in 0, not 4,294,967,286
+		punch.beRepaired(10); // should fail because it's at 0 HP
 	}
 
 	// orthodox canonical form test
