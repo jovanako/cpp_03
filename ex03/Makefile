@@ -4,12 +4,12 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 OBJDIR = objects
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
-DEPS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+DEPS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 
 all: $(NAME)
 

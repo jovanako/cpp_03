@@ -1,46 +1,28 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 #include <iostream>
 
 int main(void) {
-	{
-		std::cout << "--- TEST 1: FragTrap Chaining ---" << std::endl;
-		FragTrap frag("Fragward");
-	}
+    std::cout << "--- Creating DiamondTrap ---" << std::endl;
+    DiamondTrap dt("Sparky");
 
-	{
-		std::cout << "\n--- TEST 2: FragTrap Stats ---" << std::endl;
-		FragTrap frag("Boxer");
+    std::cout << "\n--- Identity Test ---" << std::endl;
+    dt.whoAmI(); // Should print Sparky and Sparky_clap_name
 
-		frag.attack("a punching bag"); // Should show 30 damage
-		frag.takeDamage(50); // Should have 50/100 HP left
-		frag.beRepaired(20); // Should have 70/100 HP left
-	}
+	std::cout << "\n--- Deep Copy Test ---" << std::endl;
+	DiamondTrap original("Original");
+	DiamondTrap clone("Clone");
 
-	{
-		std::cout << "\n--- TEST 3: High Fives ---" << std::endl;
-		FragTrap frag("Friendy");
-		frag.highFivesGuys();
-	}
+	clone = original;
+	clone.whoAmI(); // Should correctly transition to Original and Original_clap_name
 
-	{
-		std::cout << "\n--- TEST 4: FragTrap Copying ---" << std::endl;
-		FragTrap original("Original");
-		FragTrap copy(original);
+    std::cout << "\n--- Capability Tests ---" << std::endl;
+    dt.attack("the bad guy"); // Should use ScavTrap's attack style
+    dt.guardGate();          // Inherited from ScavTrap
+    dt.highFivesGuys();      // Inherited from FragTrap (fix typo to 'highFivesGuys' if needed)
 
-		copy.takeDamage(99);
-		original.highFivesGuys();
-	}
-
-	{
-		std::cout << "\n--- TEST 5: The Robot Army ---" << std::endl;
-		ClapTrap clap("ClapBot");
-		ScavTrap scav("ScavBot");
-		FragTrap frag("FragBot");
-
-		clap.attack("Enemy One"); // 0 damage
-		scav.attack("Enemy Two"); // 20 damage
-		frag.attack("Enemy Three"); // 30 damage
-	}
+    std::cout << "\n--- Destructors ---" << std::endl;
+    return 0;
 }
 
