@@ -2,52 +2,47 @@
 #include <iostream>
 
 int main(void) {
-	// basic functionality test
 	{
 		std::cout << "--- TEST 1: Basic actions ---" << std::endl;
 		
-		ClapTrap trap("Trapple");
+		ClapTrap bubble("Bubble");
 
-		trap.attack("a training dummy");
-		trap.takeDamage(5);
-		trap.beRepaired(3);
+		bubble.attack("a bobbly head");
+		bubble.takeDamage(5);
+		bubble.beRepaired(3);
 	}
 
-	// energy depletion test
 	{
 		std::cout << "\n--- TEST 2: Energy depletion ---" << std::endl;
 
-		ClapTrap tiredClap("TiredClap");
+		ClapTrap tiredBob("TiredBob");
 
 		for (int i = 0; i < 10; i++) {
-			tiredClap.attack("the enemy");
+			tiredBob.attack("the evil robot");
 		}
 		// 11th action: should print an error message instead of attacking
-		tiredClap.attack("the enemy again");
-		tiredClap.beRepaired(5); // Should also fail
+		tiredBob.attack("the evil robot again");
+		tiredBob.beRepaired(5); // Should also fail
 	}
 
-	// death/zero HP test
 	{
 		std::cout << "\n--- TEST 3: Death logic ---" << std::endl;
 		
-		ClapTrap ghost("Ghostling");
+		ClapTrap deadBob("Ghastly");
 
-		ghost.takeDamage(10); // 0 HP
-		ghost.attack("a target"); // should fail
-		ghost.beRepaired(10); //should fail
+		deadBob.takeDamage(10); // 0 HP
+		deadBob.attack("an enemy"); // should fail
+		deadBob.beRepaired(10); //should fail
 	}
 
-	// Over-damage (underflow) prevention
 	{
 		std::cout << "\n--- TEST 4: Massive damage ---" << std::endl;
-		ClapTrap punch("Punchy");
+		ClapTrap punchBob("Punchy");
 
-		punch.takeDamage(50); // HP is only 10. Should result in 0, not 4,294,967,286
-		punch.beRepaired(10); // should fail because it's at 0 HP
+		punchBob.takeDamage(50); // HP is only 10. Should result in 0, not 4,294,967,286
+		punchBob.beRepaired(10); // should fail because it's at 0 HP
 	}
 
-	// orthodox canonical form test
 	{
 		std::cout << "\n--- TEST 5: Canonical form ---" << std::endl;
 		ClapTrap original("Original");
@@ -55,6 +50,6 @@ int main(void) {
 
 		ClapTrap copy(original); // should have the name "Original" and 5 HP
 		ClapTrap assigned;
-		assigned = original; // should also have 5 HP
+		assigned = original; // HP shoudl also be 5
 	}
 }

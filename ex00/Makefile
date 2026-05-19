@@ -4,9 +4,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp \
-	ClapTrap.hpp \
-	ClapTrap.cpp
+SRCS = main.cpp	ClapTrap.cpp
 
 OBJDIR = objects
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
