@@ -4,34 +4,34 @@
 int main(void) {
 	{
 		std::cout << "--- TEST 1: Construction/Destruction Chaining ---" << std::endl;
-		ScavTrap scav("Serena");
+		ScavTrap scav("Sylvia");
 	}
 
 	{
 		std::cout << "\n--- TEST 2: ScavTrap Stats and Attack ---" << std::endl;
-		ScavTrap serena("Serena");
+		ScavTrap sam("Sam");
 
 		// ScavTrap starts with 50 energy
 		// It should deal 20 damage
-		serena.attack("a bad guy");
+		sam.attack("a monster");
 
-		serena.takeDamage(30); // Should have 70 HP left
-		serena.beRepaired(20); // Should have 90 HP left
+		sam.takeDamage(30); // Should have 70 HP left
+		sam.beRepaired(20); // Should have 90 HP left
 	}
 
 	{
 		std::cout << "\n--- TEST 3: Special Ability ---" << std::endl;
-		ScavTrap guard("Guary");
+		ScavTrap guard("Gary");
 		guard.guardGate(); // Should print the Gate keeper mode message
 	}
 
 	{
 		std::cout << "\n--- TEST 4: Pointer Chaining ---" << std::endl;
-		ClapTrap* poly = new ScavTrap("Poly");
+		ClapTrap* clap = new ScavTrap("Charlie");
 
-		poly->attack("the enemy"); // Will call ClapTrap::attack unless you made it virtual
+		clap->attack("the target"); // Will call ClapTrap::attack unless you made it virtual
 
-		delete poly; // MUST call both destructors because of 'virtual ~ClapTrap()'
+		delete clap; // MUST call both destructors because of 'virtual ~ClapTrap()'
 	}
 
 	{
@@ -42,7 +42,6 @@ int main(void) {
 		ScavTrap copy(original);
 		ScavTrap assigned("Temporary");
 		assigned = original;
-		// Expected values for ScavTrap: HP: 100, EP: 50, AD: 20
 	}
 }
 
